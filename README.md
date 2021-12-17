@@ -1,7 +1,5 @@
 # dotfile & list of program on my i3
 
-
- **ro: o copie de siguranță a fișierelor de configurare ale i3 și a programelor pe care le folosesc** 
  **en: a backup of the i3 configuration files and programs they use** 
  
  * Distro - Arch
