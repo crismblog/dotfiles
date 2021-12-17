@@ -16,3 +16,5 @@
  * PDF viewer - zathura
  * Theme: Nord
  * Other: tty-clock, cmatrix, htop, bashtop, maim, scrot, ytfzf, youtube-dl, waldl
+
+![2021-12-17_1920x1080_000](https://user-images.githubusercontent.com/26747226/146607890-38cd75ab-c051-420d-8163-12b2aa6cfbcc.png)
