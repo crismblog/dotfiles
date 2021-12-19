@@ -3,7 +3,7 @@
  **en: a backup of the i3 configuration files and programs they use** 
  
  * Distro - Arch
- * WM - i3-gaps
+ * WM - i3-gaps-rounded
  * Menu - Rofi
  * Compositor - picom
  * Terminal - Kitty
