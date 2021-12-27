@@ -9,18 +9,16 @@
 general {
         colors = true
         interval = 5
-        color_good = "#81a1c1" # Light green
-        color_degraded = "#fafe7c" # Light yellow
-        color_bad = "#ff7770" # Light red
+        color_gof = 
 }
 
 order += "ethernet _first_"
+order += "volume master"
 order += "disk /"
 order += "disk /home"
 order += "memory"
 order += "cpu_usage"
 order += "cpu_temperature 0"
-order += "volume master"
 order += "tztime local"
 
 
@@ -29,39 +27,39 @@ ethernet _first_ {
         format_down = "⛓️"
 }
 
-disk "/" {
-        format = " %avail"
-}
-
-disk "/home" {
-	format = " %avail"
-}
-
-
-memory {
-        format = "🧠 %used"
-        threshold_degraded = "1G"
-        format_degraded = "MEMORY < %available"
-}
-
-cpu_usage {
-	format = " %usage"
-	max_threshold= 75
-}
-
-cpu_temperature 0 {
-	format = "🌡️ %degrees°C"
-	path = "/sys/class/hwmon/hwmon2/subsystem/hwmon1/temp1_input"
-}
-
 volume master {
-	format = " %volume"
+	format = "  %volume"
 	format_muted = ""
 	device = "default"
 	mixer = "Master"
 	mixer_idx = 0
 }
 
+disk "/" {
+        format = "  %avail"
+}
+
+disk "/home" {
+	format = "  %avail"
+}
+
+
+memory {
+        format = "  %used"
+        threshold_degraded = "1G"
+        format_degraded = "MEMORY < %available"
+}
+
+cpu_usage {
+	format = "  %usage"
+	max_threshold= 75
+}
+
+cpu_temperature 0 {
+	format = "  %degrees°C"
+	path = "/sys/class/hwmon/hwmon2/subsystem/hwmon1/temp1_input"
+}
+
 tztime local {
-        format = " %d-%m-%Y   %H:%M"
+        format = "  %d-%m-%Y |  %H:%M"
 }
