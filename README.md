@@ -17,8 +17,7 @@
  * Theme: Nord
  * Other: tty-clock, cmatrix, htop, bashtop, maim, scrot, ytfzf, youtube-dl, waldl
 
-![2021-12-17_1920x1080_004](https://user-images.githubusercontent.com/26747226/146608891-fa4b2876-6553-461e-b884-bd830ed43f2e.png)
 
-![2021-12-17_1920x1080](https://user-images.githubusercontent.com/26747226/146609038-abfe8724-f0da-47ea-9820-e1dd71f5e331.png)
+![2021-12-27_20:16:22](https://user-images.githubusercontent.com/26747226/147497447-21c41f83-e432-4e37-a99a-ba7d16d1d6f1.png)
 
-![2021-12-19_22:50:35](https://user-images.githubusercontent.com/26747226/146690364-4f4e7aed-851d-449e-8536-17e5cbb71206.png)
+![2021-12-27_20:16:36](https://user-images.githubusercontent.com/26747226/147497454-9260c37e-d6bc-409e-b18a-e24eeb87a033.png)
