@@ -132,10 +132,10 @@ assign [class="Thunderbird"] $ws3
 assign [class="discord"] $ws4
 assign [class="TelegramDesktop"] $ws5
 assign [class="Thunar"] $ws6
-assign [class="mousepad"] $ws7
+assign [class="Mousepad"] $ws7
 assign [class="mpv"] $ws8
 assign [class="musikcube"] $ws8
-assign [class="gimp"] $ws7
+assign [class="Gimp"] $ws9
 
 
 # Automatic set focus new window if it opens on another workspace then the current:
@@ -243,16 +243,16 @@ bar {
 #        }
 
          colors {
-                 separator  $base01
-                 background $base01
-                 statusline #81a1c1
+                separator  $base01
+                background $base01
+                statusline #81a1c1
                  
-                 #                   border  background text
-                 focused_workspace  $base01 $base01    #81a1c1 
-                 active_workspace   $base01 $base02    $base03
-                 inactive_workspace $base01 $base01    #4c566a
-                 urgent_workspace   $base01 $base01    $base08
-                 binding_mode       $base01 #81a1c1    #2e3440
+                #                   border  background text
+                focused_workspace  $base01 $base01    #81a1c1 
+                active_workspace   $base01 $base02    $base03
+                inactive_workspace $base01 $base01    #4c566a
+                urgent_workspace   $base01 $base01    $base08
+                binding_mode       $base01 #81a1c1    #2e3440
          }
 }
 
