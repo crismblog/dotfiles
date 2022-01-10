@@ -3,18 +3,18 @@
  **en: a backup of the i3 configuration files and programs they use** 
  
  * Distro - Arch
- * WM - i3-gaps-rounded
- * Menu - Rofi
+ * WM - i3-gaps-rounded-git https://github.com/LinoBigatti/i3-rounded
+ * Menu - rofi
  * Compositor - picom https://github.com/ibhagwan/picom
- * Terminal - Kitty
+ * Terminal - kitty
  * File Manager - ranger
  * Music Player - musikcube
- * Text editors - nano, mousepad
+ * Text editors - vim, nano, mousepad
  * Pictures viewer - sxiv, feh
  * Video player - mpv
  * Wallpaper app - nitrogen
  * PDF viewer - zathura
- * Theme: Nord
+ * Theme: nord (nordic)
  * Other: tty-clock, cmatrix, htop, bashtop, maim, scrot, ytfzf, youtube-dl, waldl
 
 
