@@ -5,7 +5,7 @@
  * Distro - Arch
  * WM - i3-gaps-rounded
  * Menu - Rofi
- * Compositor - picom
+ * Compositor - picom https://github.com/ibhagwan/picom
  * Terminal - Kitty
  * File Manager - ranger
  * Music Player - musikcube
