@@ -36,15 +36,15 @@ alias install='sudo pacman -S'
 alias linstall='sudo pacman -U'
 alias remove='sudo pacman -R'
 alias update='sudo pacman -Syyu'
-alias up='yay && sudo pacman -Sy'
+alias up='paru && sudo pacman -Sy'
 alias clean='sudo pacman -Rns $(pacman -Qtdq)'
 alias clr='sudo pacman -Scc'
 
 #yay as aur helper - updates everything
-alias pget='yay -S '
-alias prm='yay -Rs '
-alias psr='yay -Ss '
-alias upall='yay -Syyu --noconfirm'
+alias pget='paru -S '
+alias prm='paru -Rs '
+alias psr='paru -Ss '
+alias upall='paru -Syyu --noconfirm'
 
 ##Cmatrix thing
 alias matrix='cmatrix -s -C cyan'
@@ -79,9 +79,13 @@ alias desk='cd ~/Desktop'
 alias pics='cd ~/Pictures'
 alias dldz='cd ~/Downloads'
 alias docs='cd ~/Documents'
+alias dgit='cd ~/Git'
 alias sapps='cd /usr/share/applications'
-alias lapps='cd ~/.local/share/applications'
 
-#PS1='[\u@\h \W]\$ '
-export PS1="\[\033[38;5;67m\]\d\[$(tput sgr0)\] \[$(tput sgr0)\]\[\033[38;5;67m\]\t\[$(tput sgr0)\]\n\u \[$(tput sgr0)\]\[\033[38;5;67m\]@\[$(tput sgr0)\] \h\n\W \\$ \[$(tput sgr0)\]"
-pfetch
+#pfetch
+neofetch
+
+
+# BEGIN_KITTY_SHELL_INTEGRATION
+if test -n "$KITTY_INSTALLATION_DIR" -a -e "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; then source "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; fi
+# END_KITTY_SHELL_INTEGRATION
