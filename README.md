@@ -1,6 +1,4 @@
-# dotfile & list of program on my i3
-
- **en: a backup of the i3 configuration files and programs they use** 
+This repository contains the configuration files a.k.a. the dotfiles of my Arch-Linux i3wm setup
  
  * Distro: Arch
  * WM: i3-gaps-rounded-git (https://github.com/LinoBigatti/i3-rounded)
