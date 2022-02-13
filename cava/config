@@ -4,7 +4,7 @@
 [general]
 
 # Smoothing mode. Can be 'normal', 'scientific' or 'waves'. DEPRECATED as of 0.6.0
-; mode = normal
+; mode = waves
 
 # Accepts only non-negative values.
 ; framerate = 60
@@ -12,7 +12,7 @@
 # 'autosens' will attempt to decrease sensitivity if the bars peak. 1 = on, 0 = off
 # new as of 0.6.0 autosens of low values (dynamic range)
 # 'overshoot' allows bars to overshoot (in % of terminal height) without initiating autosens. DEPRECATED as of 0.6.0
-; autosens = 0
+; autosens = 1
 ; overshoot = 20
 
 # Manual sensitivity in %. If autosens is enabled, this will only be the initial value.
@@ -24,6 +24,10 @@
 ; bars = 0
 ; bar_width = 2
 ; bar_spacing = 1
+
+# For SDL width and space between bars is in pixels, defaults are:
+; bar_width = 20
+; bar_spacing = 5
 
 
 # Lower and higher cutoff frequencies for lowest and highest bars
@@ -56,8 +60,8 @@
 ; method = pulse
 ; source = auto
 
-; method = alsa
-; source = hw:Loopback,1
+method = alsa
+source = hw:Loopback,1
 
 ; method = fifo
 ; source = /tmp/mpd.fifo
@@ -73,13 +77,15 @@
 
 [output]
 
-# Output method. Can be 'ncurses', 'noncurses' or 'raw'.
-# 'noncurses' uses a custom framebuffer technique and draws only changes
-# from frame to frame. 'ncurses' is default if supported
+# Output method. Can be 'ncurses', 'noncurses', 'raw' or 'sdl'.
+# 'noncurses' uses a custom framebuffer technique and prints only changes
+# from frame to frame in the terminal. 'ncurses' is default if supported.
 #
 # 'raw' is an 8 or 16 bit (configurable via the 'bit_format' option) data
 # stream of the bar heights that can be used to send to other applications.
 # 'raw' defaults to 200 bars, which can be adjusted in the 'bars' option above.
+#
+# 'sdl' uses the Simple DirectMedia Layer to render in a graphical context.
 ; method = ncurses
 
 # Visual channels. Can be 'stereo' or 'mono'.
@@ -106,7 +112,11 @@
 ; bar_delimiter = 59
 ; frame_delimiter = 10
 
-
+# sdl window size and position. -1,-1 is centered.
+; sdl_width = 1000
+; sdl_height = 500
+; sdl_x = -1
+; sdl_y= -1
 
 [color]
 
@@ -115,22 +125,27 @@
 # ncurses output method and a terminal that can change color definitions such as Gnome-terminal or rxvt.
 # if supported, ncurses mode will be forced on if user defined colors are used.
 # default is to keep current terminal color
-; background = default
-foreground = '#d50368'
+background = default
+foreground = default
+
+# SDL only support hex code colors, these are the default:
+; background = '#111111'
+; foreground = '#33cccc'
+
 
 # Gradient mode, only hex defined colors (and thereby ncurses mode) are supported,
 # background must also be defined in hex  or remain commented out. 1 = on, 0 = off.
 # You can define as many as 8 different colors. They range from bottom to top of screen
 gradient = 1
 gradient_count = 8
-gradient_color_1 = '#5e81ac'
-gradient_color_2 = '#618ab2'
-gradient_color_3 = '#6593b8'
-gradient_color_4 = '#699dbd'
-gradient_color_5 = '#70a6c2'
-gradient_color_6 = '#77aec7'
-gradient_color_7 = '#7fb7cc'
-gradient_color_8 = '#88c0d0'
+gradient_color_1 = '#d70000'
+gradient_color_2 = '#d75f00'
+gradient_color_3 = '#af8700'
+gradient_color_4 = '#5f8700'
+gradient_color_5 = '#00afaf'
+gradient_color_6 = '#cc8033'
+gradient_color_7 = '#0087ff'
+gradient_color_8 = '#5f5faf'
 
 
 
@@ -138,19 +153,19 @@ gradient_color_8 = '#88c0d0'
 
 # Percentage value for integral smoothing. Takes values from 0 - 100.
 # Higher values means smoother, but less precise. 0 to disable.
-; integral = 77
+integral = 77
 
 # Disables or enables the so-called "Monstercat smoothing" with or without "waves". Set to 0 to disable.
-; monstercat = 0
-; waves = 0
+monstercat = 1
+waves = 1
 
 # Set gravity percentage for "drop off". Higher values means bars will drop faster.
 # Accepts only non-negative values. 50 means half gravity, 200 means double. Set to 0 to disable "drop off".
-; gravity = 100
+gravity = 100
 
 
 # In bar height, bars that would have been lower that this will not be drawn.
-; ignore = 0
+ignore = 0
 
 
 [eq]
@@ -158,8 +173,8 @@ gradient_color_8 = '#88c0d0'
 # This one is tricky. You can have as much keys as you want.
 # Remember to uncomment more then one key! More keys = more precision.
 # Look at readme.md on github for further explanations and examples.
-; 1 = 1 # bass
-; 2 = 1
-; 3 = 1 # midtone
-; 4 = 1
-; 5 = 1 # treble
+1 = 1 # bass
+2 = 1
+3 = 1 # midtone
+4 = 1
+5 = 1 # treble
