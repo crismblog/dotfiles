@@ -6,7 +6,7 @@
 set $mod Mod4
 
 # Font for window titles.
-font pango:Noto Sans Regular 10
+font pango: Hack Nerd Font 10, FontAwesome 10
 
 # Start XDG autostart
 exec --no-startup-id dex --autostart --environment i3
@@ -15,13 +15,14 @@ exec --no-startup-id dex --autostart --environment i3
 exec --no-startup-id nm-applet
 
 # Start a terminal
-bindsym $mod+Return exec kitty
+bindsym $mod+Return exec alacritty
 
 # Kill focused window
 bindsym $mod+q kill
 
 # Start rofi
-bindsym $mod+d exec --no-startup-id rofi -show drun -font "Noto Sans 10"
+bindsym $mod+d exec --no-startup-id rofi -show drun -font "Hack Nerd Font 10"
+bindsym $mod+s exec --no-startup-id rofi -show run  "Hack Nerd Font 10"
 
 # Move between windows
 bindsym $mod+j focus left
@@ -65,9 +66,6 @@ bindsym $mod+space focus mode_toggle
 # Focus the parent container
 bindsym $mod+a focus parent
 
-# Focus the child container
-#bindsym $mod+d focus child
-
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
@@ -78,10 +76,10 @@ bindsym $mod+Shift+e exec i3-msg exit
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle &&
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
 # Use brightnessctl to adjust actual brightness
 bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +10%
@@ -92,13 +90,13 @@ bindsym Ctrl+XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
 # Name the workspaces
 set $ws1 "1: "
 set $ws2 "2: "
-set $ws3 "3: "
+set $ws3 "3: "
 set $ws4 "4: "
 set $ws5 "5: "
 set $ws6 "6: "
 set $ws7 "7: "
 set $ws8 "8: "
-set $ws9 "9: "
+set $ws9 "9: "
 set $ws10 "10: "
 
 # Switch to workspace
@@ -126,28 +124,28 @@ bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
 # Always open some programs on specified workspac
-assign [class="(?i)kitty"] $ws1
-assign [class="(?i)firefox|librewolf"] $ws2
+assign [class="(?i)alacritty"] $ws1
+assign [class="(?i)firefox"] $ws2
 assign [class="(?i)thunderbird"] $ws3
 assign [class="(?i)discord"] $ws4
 assign [class="(?i)telegramdesktop"] $ws5
-assign [class="(?i)thunar|pcmanfm"] $ws6
-assign [class="(?i)mousepad"] $ws7
+assign [class="(?i)pcmanfm"] $ws6
+assign [class="(?i)leafpad|libreoffice|lowriter"] $ws7
 assign [class="(?i)mpv"] $ws8
-assign [class="(?i)musikcube"] $ws8
+assign [class="(?i)musikcube|cmus"] $ws8
 assign [class="(?i)gimp"] $ws9
 
 
 # Automatic set focus new window if it opens on another workspace then the current:
-for_window [class=(?i)kitty] focus
-for_window [class=(?i)firefox|librewolf] focus
+for_window [class=(?i)alacritty] focus
+for_window [class=(?i)firefox] focus
 for_window [class=(?i)thunderbird] focus
 for_window [class=(?i)discord] focus
 for_window [class=(?i)telegramdesktop] focus
-for_window [class=(?i)thunar|pcmanfm] focus
-for_window [class=(?i)mousepad] focus
+for_window [class=(?i)pcmanfm] focus
+for_window [class=(?i)leafpad|libreoffice|lowriter] focus
 for_window [class=(?i)mpv] focus
-for_window [class=(?i)musikcube] focus
+for_window [class=(?i)musikcube|cmus] focus
 for_window [class=(?i)gimp] focus
 
 # Resize window (you can also use the mouse for that)
@@ -210,13 +208,16 @@ set $base0C #97e0ff
 set $base0D #97bbf7
 set $base0E #c0b7f9
 set $base0F #fcc09e
-#its neon blue #4666FF
 
 bar {
-        status_command i3status -c ~/.config/i3/i3status.conf
-	position top
-        font pango: Noto Sans Regular 10, FontAwesome 10
-        strip_workspace_numbers yes
+     font pango: Hack Nerd Font 9, FontAwesome 9
+     position top
+     status_command ~/.local/bin/bumblebee-status \
+            -m cmus nic disk:home cpu memory pasink date time battery \
+            -p cmus.format={file2} nic.format="{intf} {state} {ssid}" home.patch=/ disk.format="{percent:2f}%" \
+						cpu.format="{:.01f}%" memory.format="{used}/{total}" time.format="%H:%M" date.format="%d %b %Y" \
+						battery.decorate="true" battery.compact-devices="false" \
+            -t nord-powerline
 
          colors {
                 separator  $base01
@@ -234,16 +235,12 @@ bar {
 
 # Startup programs
 exec --no-startup-id picom -bc
-exec --no-startup-id bitwarden-desktop
-exec --no-startup-id joplin-desktop
-#exec --no-startup-id nitrogen --restore
 exec --no-startup-id dunst
 exec --no-startup-id udiskie
-#exec --no-startup-id transmission-gtk
-exec --no-startup-id sleep 2 && kitty
+exec --no-startup-id sleep 2 && alacritty
 
 # Wallpapers
-exec_always feh --bg-fill /home/cristian/Pictures/Wallpapers/Everforest2.png
+exec_always feh --bg-fill /home/cristian/Pictures/Wallpapers/pink-blue-tiled-abstract-hexagon-1920x1080.jpg
 
 # Screenshot
 bindsym Print exec maim -m 1 -u ~/Pictures/Screenshots/"$(date +%Y-%m-%d_%H:%M:%S).png"
@@ -251,11 +248,9 @@ bindsym Shift+Print exec maim -m 1 -s -u ~/Pictures/Screenshots/"$(date +%Y-%m-%
 
 #Keybinds
 bindsym $mod+w exec firefox
-bindsym $mod+b exec librewolf
 bindsym $mod+t exec thunderbird
 bindsym $mod+Shift+d exec discord
 bindsym $mod+Shift+t exec telegram-desktop
-#bindsym $mod+n exec thunar
 bindsym $mod+n exec pcmanfm
-bindsym $mod+m exec mousepad
+bindsym $mod+m exec leapad
 bindsym $mod+g exec gimp
