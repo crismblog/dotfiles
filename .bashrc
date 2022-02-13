@@ -22,7 +22,7 @@ alias traceme='traceroute github.com'
 alias ytv-best='yt-dlp -f "bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio" --merge-output-format mp4 '
 alias yt='ytfzf -tf'
 alias mp3='youtube-dl -f 140'
-alias wdl='/home/cristian/Git/waldl/waldl'
+alias wdl='/home/cristian/Gits/waldl/waldl'
 
 #shutdown or reboot
 alias suspend='systemctl suspend'
@@ -40,7 +40,7 @@ alias up='paru && sudo pacman -Sy'
 alias clean='sudo pacman -Rns $(pacman -Qtdq)'
 alias clr='sudo pacman -Scc'
 
-#yay as aur helper - updates everything
+#paru as aur helper - updates everything
 alias pget='paru -S '
 alias prm='paru -Rs '
 alias psr='paru -Ss '
@@ -79,11 +79,11 @@ alias desk='cd ~/Desktop'
 alias pics='cd ~/Pictures'
 alias dldz='cd ~/Downloads'
 alias docs='cd ~/Documents'
-alias dgit='cd ~/Git'
+alias dgit='cd ~/Gits'
 alias sapps='cd /usr/share/applications'
 
-#pfetch
-neofetch
+pfetch
+#neofetch
 
 
 # BEGIN_KITTY_SHELL_INTEGRATION
